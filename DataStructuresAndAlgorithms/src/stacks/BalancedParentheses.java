@@ -1,0 +1,42 @@
+package stacks;
+
+import java.util.Stack;
+
+public class BalancedParentheses {
+
+	public static void main(String[] args) {
+		String str1 = "({[]})";
+		String str2 = "({[])";
+		
+		System.out.println(str1 + " is balanced? " + isBalanced(str1));
+		System.out.println(str2 + " is balanced? " + isBalanced(str2));
+	}
+	
+	// 2. Balanced parentheses checker
+	public static boolean isBalanced(String expression) {
+        Stack<Character> stack = new Stack<>();
+
+        for (char c : expression.toCharArray()) {
+            // Push opening brackets
+            if (c == '(' || c == '{' || c == '[') {
+                stack.push(c);
+            }
+            // Check closing brackets
+            else if (c == ')' || c == '}' || c == ']') {
+                if (stack.isEmpty()) {
+                    return false; // no matching opening bracket
+                }
+                char top = stack.pop();
+                if ((c == ')' && top != '(') ||
+                    (c == '}' && top != '{') ||
+                    (c == ']' && top != '[')) {
+                    return false; // mismatched pair
+                }
+            }
+        }
+
+        // If stack is empty, all brackets matched
+        return stack.isEmpty();
+    }
+}
+

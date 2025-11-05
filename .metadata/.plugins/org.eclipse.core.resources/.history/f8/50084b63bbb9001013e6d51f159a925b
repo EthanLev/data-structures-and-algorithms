@@ -1,0 +1,61 @@
+package stacks;
+
+import java.util.Stack;
+
+public class ReverseString {
+
+	public static void main(String[] args) {
+		// 1. Reverse a string
+		String word = "hello";
+		
+		// Create stack to hold characters of word
+		Stack<Character> stack = new Stack<>();
+		
+		// Push all characters from string onto stack
+		for (char c : word.toCharArray()) {
+			stack.push(c);
+		}
+		
+		// Pop character from the stack to build revered string
+		String reversed = "";
+		while (!stack.isEmpty()) {
+			reversed += stack.pop();
+		}
+		
+		System.out.println("Original word: " + word);
+		System.out.println("Reversed word: " + reversed);
+		
+		// 2. Balanced parentheses checker
+		public static boolean isBalanced(String str) {
+			Stack<Character> stack = new Stack<>();
+			
+			for (char c : str.toCharArray()) {
+				// Push opening brackets
+				if (c == '(' || c == '{' || c == '[') {
+					stack.push(c);
+				} 
+				// Check closing brackets
+				else if (c == ')' || c == '}' || c == ']') {
+					if (stack.isEmpty()) {
+						return false; // no matching opening bracket
+					}
+					
+					char top = stack.pop();
+					
+					if ((c == ')' && top != '(') ||
+						(c == '}' && top != '{') ||
+						(c == ']' && top != '[')) {
+						return false; // pair mismatched
+					}
+				}
+			}
+			
+			// if stack is empty, all brackets matched
+			return stack.isEmpty();
+		}
+		
+		
+		// 3. Undo/Redo system
+		
+	}
+}

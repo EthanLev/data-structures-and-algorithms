@@ -1,0 +1,28 @@
+package stacks;
+
+import java.util.Stack;
+
+public class ReverseString {
+
+	public static void main(String[] args) {
+		// 1. Reverse a string
+		String word = "hello";
+		
+		// Create stack to hold characters of word
+		Stack<Character> stack = new Stack<>();
+		
+		// Push all characters from string onto stack
+		for (char c : word.toCharArray()) {
+			stack.push(c);
+		}
+		
+		// Pop character from the stack to build revered string
+		String reversed = "";
+		while (!stack.isEmpty()) {
+			reversed += stack.pop();
+		}
+		
+		System.out.println("Original word: " + word);
+		System.out.println("Reversed word: " + reversed);
+	}
+}
