@@ -5,12 +5,6 @@ import java.util.Stack;
 public class ReverseString {
 
 	public static void main(String[] args) {
-		String word = "hello";
-		
-		reverseString(word);
-	}
-	
-	public static String reverseString(String str) {
 		// 1. Reverse a string
 		String word = "hello";
 		
@@ -30,7 +24,5 @@ public class ReverseString {
 		
 		System.out.println("Original word: " + word);
 		System.out.println("Reversed word: " + reversed);
-		
-		return reversed;
 	}
 }

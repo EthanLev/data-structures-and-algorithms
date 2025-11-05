@@ -1,0 +1,67 @@
+package stacks;
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class UndoRedoText {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        Stack<String> undoStack = new Stack<>();
+        Stack<String> redoStack = new Stack<>();
+        String currentText = "";
+
+        while (true) {
+            System.out.println("\nCurrent text: " + currentText);
+            System.out.println("Choose an option:");
+            System.out.println("1. Type new text");
+            System.out.println("2. Undo");
+            System.out.println("3. Redo");
+            System.out.println("4. Exit");
+            System.out.print("Choice: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // consume newline
+
+            switch (choice) {
+                case 1:
+                    // Save current text to undo history
+                    undoStack.push(currentText);
+                    System.out.print("Enter new text: ");
+                    String newText = scanner.nextLine();
+                    currentText = newText;
+
+                    // Clear redo history since we made a new edit
+                    redoStack.clear();
+                    break;
+
+                case 2:
+                    if (!undoStack.isEmpty()) {
+                        redoStack.push(currentText);
+                        currentText = undoStack.pop();
+                    } else {
+                        System.out.println("Nothing to undo!");
+                    }
+                    break;
+
+                case 3:
+                    if (!redoStack.isEmpty()) {
+                        undoStack.push(currentText);
+                        currentText = redoStack.pop();
+                    } else {
+                        System.out.println("Nothing to redo!");
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("Exiting editor...");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid choice!");
+            }
+        }
+    }
+}
