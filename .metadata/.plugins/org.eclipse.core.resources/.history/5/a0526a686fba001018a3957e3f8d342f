@@ -1,0 +1,37 @@
+package linkedlists;
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class ToDoList {
+
+	public static void main(String[] args) {
+		Scanner scnr = new Scanner(System.in);
+		
+		LinkedList<String> list = new LinkedList<>();
+		
+		String task = "";
+		
+		while (true) {
+			System.out.println("- To Do List -");
+			System.out.println("Choose an option: ");
+			System.out.println("1. Add to list");
+			System.out.println("2. Remove from list");
+			System.out.println("3. Clear list");
+			
+			int choice = scnr.nextInt();
+			
+			switch (choice) {
+			case 1:
+				System.out.println("Type your task: ");
+				task = scnr.nextLine();
+				list.add(task);
+				
+				break;
+			case 2:
+				
+			case 3:
+			}
+		}
+	}
+}
