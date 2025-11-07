@@ -1,0 +1,116 @@
+package linkedlists;
+
+import java.util.*;
+import java.io.*;
+
+public class Playlist {
+
+	public static LinkedList<Song> songs = new LinkedList<>();
+	public static Scanner scnr = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		boolean isRunning = true;
+		
+		while (isRunning) {
+			System.out.println("\nOptions: \nadd \nremove \ncount \nplay \nshuffle \nreverse \nquit");
+			String choice = scnr.nextLine().toLowerCase();
+			
+			switch (choice) {
+				case "add" : addSong(); break;
+				case "remove":	
+				case "count":
+				case "play":
+				case "shuffle":
+				case "reverse":
+				case "quit": isRunning = false; break;
+				default : System.out.println("Unknown choice");
+			}
+		}
+		
+		System.out.println("Exiting Playlist");
+	}
+	
+	// Adds a song to the playlist
+	private static void addSong() {
+		System.out.println(": add");
+		System.out.println("Enter artist: ");
+		String artist = scnr.nextLine();
+		System.out.println("Enter song title: ");
+		String title = scnr.nextLine();
+		Song song = new Song(artist, title);
+		songs.add(song);
+		
+		System.out.println(song.getTitle() + " added to playlist");
+	}
+	
+	
+	// Removes a song from the playlist if there are at least 2 songs
+	private static void removeSong() {
+		if (songs.size() >= 2) {
+			System.out.println(": remove");
+			System.out.println("Enter artist: ");
+			String artist = scnr.nextLine();
+			System.out.println("Enter title: ");
+			String title = scnr.nextLine();
+			Song song = new Song(artist, title);
+			
+			boolean removed = songs.remove(song); // returns true if song was removed
+			
+			if (removed) {
+				System.out.println(song.getTitle() + " was removed from playlist");
+			} else {
+				System.out.println("Song not found in playlist");
+			}
+		} else {
+			System.out.println("Playlist needs at least 1 song, cannot remove");
+		}
+	}
+	
+	
+	// Return number of songs in playlist
+	
+	
+	
+	// Play all songs in the playlist in order
+
+}
+
+class Song {
+	private String artist;
+	private String title;
+	
+	public Song(String artist, String title) {
+		this.artist = artist;
+		this.title = title;
+	}
+	
+	public String getArtist() {
+		return artist;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	
+	public void setArtist(String artist) {
+		this.artist = artist;
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	@Override
+	public String toString() {
+		return title + ", " + artist;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		
+		Song song = (Song) obj; // cast obj as Song
+		return artist.equals(song.artist) && title.equals(song.title);
+	}
+}

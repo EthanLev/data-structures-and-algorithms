@@ -1,0 +1,71 @@
+package linkedlists;
+
+import java.util.*;
+import java.io.*;
+
+public class Playlist {
+
+	public static LinkedList<Song> songs = new LinkedList<>();
+	public static Scanner scnr = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		boolean isRunning = true;
+		
+		while (isRunning) {
+			System.out.println("\nOptions: \nadd \nremove \ncount \nplay \nshuffle \nreverse \nquit");
+			String choice = scnr.nextLine().toLowerCase();
+			
+			switch (choice) {
+				case "add" :
+				case "remove":	
+				case "count":
+				case "play":
+				case "shuffle":
+				case "reverse":
+				case "quit":
+				default : System.out.println("Unknown choice");
+			}
+		}
+	}
+
+}
+
+class Song {
+	private String artist;
+	private String title;
+	
+	public Song(String artist, String title) {
+		this.artist = artist;
+		this.title = title;
+	}
+	
+	public String getArtist() {
+		return artist;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	
+	public void setArtist(String artist) {
+		this.artist = artist;
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	@Override
+	public String toString() {
+		return title + ", " + artist;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		
+		Song song = (Song) obj; // cast obj as Song
+		return artist.equals(song.artist) && title.equals(song.title);
+	}
+}
