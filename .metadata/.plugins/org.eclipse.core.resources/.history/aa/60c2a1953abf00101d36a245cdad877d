@@ -85,37 +85,18 @@ public class Playlist {
 	}
 	
 	// Shuffles the playlist randomly
-	private static void shuffle() {
-		System.out.println(": shuffle");
-		int size = songs.size();
-		Random rndm = new Random();
-		
-		for (int i = 0; i < size; i++) {
-			int val = rndm.nextInt(size);
-			
-			Song temp = songs.get(i);
-			songs.set(i,  songs.get(val));
-			songs.set(val, temp);
-		}
-		
-		//System.out.println("Playlist shuffled");
-	}
+	
+	
 	
 	// Reverses the order of songs in the playlist
-	private static void reverse() {
-		System.out.println(": reverse");
-		songs.reversed();
-	}
+	
+	
 	
 	// Saves the playlist to a file
-	private static void save() {
-		
-	}
+	
+	
 	
 	// Loads a playlist from a file
-	private static void load() {
-		
-	}
 }
 
 class Song {

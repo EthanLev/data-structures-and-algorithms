@@ -98,24 +98,19 @@ public class Playlist {
 			songs.set(val, temp);
 		}
 		
-		//System.out.println("Playlist shuffled");
+		System.out.println("Playlist shuffled");
 	}
+	
 	
 	// Reverses the order of songs in the playlist
-	private static void reverse() {
-		System.out.println(": reverse");
-		songs.reversed();
-	}
+	
+	
 	
 	// Saves the playlist to a file
-	private static void save() {
-		
-	}
+	
+	
 	
 	// Loads a playlist from a file
-	private static void load() {
-		
-	}
 }
 
 class Song {

@@ -17,11 +17,11 @@ public class Playlist {
 			
 			switch (choice) {
 				case "add" : addSong(); break;
-				case "remove": removeSong(); break;
-				case "count": songCount(); break;
-				case "play": play(); break;
-				case "shuffle": shuffle(); break;
-				case "reverse": reverse(); break;
+				case "remove":	
+				case "count":
+				case "play":
+				case "shuffle":
+				case "reverse":
 				case "quit": isRunning = false; break;
 				default : System.out.println("Unknown choice");
 			}
@@ -42,6 +42,7 @@ public class Playlist {
 		
 		System.out.println(song.getTitle() + " added to playlist");
 	}
+	
 	
 	// Removes a song from the playlist if there are at least 2 songs
 	private static void removeSong() {
@@ -65,6 +66,7 @@ public class Playlist {
 		}
 	}
 	
+	
 	// Return number of songs in playlist
 	private static int songCount() {
 		return songs.size();
@@ -82,39 +84,6 @@ public class Playlist {
 		for (int i = 0; i < songs.size(); i++) {
 			System.out.println(songs.get(i));
 		}
-	}
-	
-	// Shuffles the playlist randomly
-	private static void shuffle() {
-		System.out.println(": shuffle");
-		int size = songs.size();
-		Random rndm = new Random();
-		
-		for (int i = 0; i < size; i++) {
-			int val = rndm.nextInt(size);
-			
-			Song temp = songs.get(i);
-			songs.set(i,  songs.get(val));
-			songs.set(val, temp);
-		}
-		
-		//System.out.println("Playlist shuffled");
-	}
-	
-	// Reverses the order of songs in the playlist
-	private static void reverse() {
-		System.out.println(": reverse");
-		songs.reversed();
-	}
-	
-	// Saves the playlist to a file
-	private static void save() {
-		
-	}
-	
-	// Loads a playlist from a file
-	private static void load() {
-		
 	}
 }
 
