@@ -109,23 +109,7 @@ public class Playlist {
 	
 	// Saves the playlist to a file
 	private static void save() {
-		System.out.println(": save");
-		System.out.println("Enter file name to save to: ");
-		String fileName = scnr.nextLine();
 		
-		try {
-			PrintWriter writer = new PrintWriter(fileName);
-			
-			for (int i = 0; i < songs.size(); i++) {
-				Song song = songs.get(i);
-				writer.println(song.getArtist() + " - " + song.getTitle());
-			}
-			
-			writer.close();
-			System.out.println("Playlist saved to " + fileName);
-		} catch (FileNotFoundException e) {
-			System.out.println("Error saving playlist: " + e.getMessage());
-		}
 	}
 	
 	// Loads a playlist from a file
